@@ -27,11 +27,15 @@ from django.conf.urls.defaults import *
 
 from django.contrib.auth import views as auth_views
 
+from dbss.myform.login_msg_form import LoginMsgForm
 
 urlpatterns = patterns('',
                        url(r'^login/$',
                            auth_views.login,
-                           {'template_name': 'registration/login.html'},
+                           {
+                             'template_name': 'registration/login.html',
+                             'authentication_form': LoginMsgForm,
+                           },
                            name='auth_login'),
                        url(r'^logout/$',
                            auth_views.logout,
